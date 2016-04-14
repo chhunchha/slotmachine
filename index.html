@@ -1,31 +1,38 @@
 <html>
 <head>
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="app.css" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css" />
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
-    <script src="app.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
+	<script src="app.js"></script>
 
 </head>
 <body>
-    <div ng-app="goodmorning">
-        <div class="container-fluid"  ng-controller="goodMorningCtrl">
-            <div class="row">
-                <div class="col-md-12 col-lg-12 col-xs-12">
-                    <div class="machine-container">
-                        <div class="reels-container">
-                            <div class="reel-container" ng-repeat="reel in reels">
-                                <reel options="reel" on-stop="isAllStopped"></reel>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary spin-button" ng-click="startMachine()" ng-disabled="start">Spin</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div ng-app="goodmorning">
+		<div class="container-fluid"  ng-controller="goodMorningCtrl">
+			<div class="row">
+				<div class="col-md-12 col-lg-12 col-xs-12">
+					<div class="main-container">
+						<div class="machine-container">
+							<div class="reels-container">
+								<div class="reel-container" ng-repeat="reel in reels">
+									<reel options="reel"></reel>
+								</div>
+							</div>
+							<button class="btn btn-primary spin-button" ng-click="startMachine()" ng-disabled="isRunning">Spin</button>
+						</div>
+						<br />
+						<div ng-show="didYouWin" class="prize-container">
+							<span><strong>Enjoy your {{whatYouWon.name}}</strong></span><br />
+							<img ng-src="{{whatYouWon.img}}" class="prize-img" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

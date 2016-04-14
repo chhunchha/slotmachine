@@ -1,3 +1,11 @@
+.main-container {
+	position: relative;
+    display: inline-block;
+    margin: 20px 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .machine-container {
     position: relative;
     display: inline-block;
@@ -6,8 +14,23 @@
     transform: translateX(-50%);
 }
 
-.reels-container {
+.prize-container {
+	position: relative;
+	display: inline-block;
+	margin: 20px 0;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+}
 
+.prize-img {
+	height: 200px;
+	width: 200px;
+}
+
+.reels-container {
+	border: 20px solid rgba(132, 39, 65, 0.56);
+    border-radius: 15px;
 }
 
 .reel-container {
