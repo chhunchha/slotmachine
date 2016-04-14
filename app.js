@@ -106,7 +106,7 @@ function reelDirective() {
 			options : '='
 		},
 		templateUrl : 'reelDirective.tpl.html',
-		link : function(scope) {
+		link : function(scope, element) {
 
 			scope.data = scope.options.data;
 
@@ -124,14 +124,20 @@ function reelDirective() {
 				mininterval = 10;
 				maxinterval = Math.floor((Math.random() * 100) + 200);
 
-				scope.image_background = {'background' : 'url(' + scope.data[scope.index].img + ')'};
+				//scope.image_background = {'background' : 'url(' + scope.data[scope.index].img + ')'};
 			}
 
 			var fast = true;
 			function startReel() {
+
+				var e =  angular.element(element.children()[0]).parent().parent()[0];
+
 				scope.reelSpin = setInterval(function() {
 					scope.index = (scope.index + 1) % scope.data.length;
-					scope.image_background = {'background' : 'url(' + scope.data[scope.index].img + ')'};
+
+					e.scrollTop = scope.index * 100;
+					console.log(e.scrollTop);
+					//scope.image_background = {'background' : 'url(' + scope.data[scope.index].img + ')'};
 					scope.$apply();
 
 					if(fast) {

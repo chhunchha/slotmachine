@@ -34,7 +34,14 @@
 }
 
 .reel-container {
-    display: inline-block;
+	display: inline-block;
+	height: 100px;
+	overflow: hidden;
+	transition: transform 0.6s ease-in-out;
+}
+
+.reel-gradiant {
+
 }
 
 .reel-item-img {
