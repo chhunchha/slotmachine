@@ -8,6 +8,7 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.2/angular.min.js"></script>
 	<script src="app.js"></script>
+	<script src="reelDirective.js"></script>
 
 </head>
 <body>
@@ -22,12 +23,17 @@
 									<reel options="reel"></reel>
 								</div>
 							</div>
-							<button class="btn btn-primary spin-button" ng-click="startMachine()" ng-disabled="isRunning">Spin</button>
-						</div>
-						<br />
-						<div ng-show="didYouWin" class="prize-container">
-							<span><strong>Enjoy your {{whatYouWon.name}}</strong></span><br />
-							<img ng-src="{{whatYouWon.img}}" class="prize-img" />
+							<button class="btn btn-default spin-button" ng-click="startMachine()" ng-disabled="isRunning">Spin</button>
+							<div ng-show="!everStarted" class="prize-container">
+								<span><h3>Good Morning... <br />Lets get you a drink.</h3></span>
+							</div>
+							<div ng-show="!didYouWin && !isRunning && everStarted" class="prize-container">
+								<span><h3>Sorry! Try again...</h3></span>
+							</div>
+							<div ng-show="didYouWin" class="prize-container">
+								<span><h3>Enjoy your {{whatYouWon.name}}</h3></span><br /><br />
+								<img ng-src="{{whatYouWon.img}}" class="prize-img" />
+							</div>
 						</div>
 					</div>
 				</div>

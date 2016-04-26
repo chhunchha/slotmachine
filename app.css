@@ -12,15 +12,20 @@
     margin: 20px 0;
     left: 50%;
     transform: translateX(-50%);
+	background: darkcyan;
+	height: 500px;
+	box-shadow: 0px 15px 35px;
 }
 
 .prize-container {
 	position: relative;
-	display: inline-block;
+	/*display: inline-block;*/
 	margin: 20px 0;
 	left: 50%;
 	transform: translateX(-50%);
 	text-align: center;
+	/*border: 1px solid;*/
+	color: #fff;
 }
 
 .prize-img {
@@ -29,20 +34,51 @@
 }
 
 .reels-container {
-	border: 20px solid rgba(132, 39, 65, 0.56);
-    border-radius: 15px;
+	/*border: 20px solid rgba(132, 39, 65, 0.56);*/
+    border-radius: 10px;
+	box-shadow: 0px 10px 40px #4E4D4D;
 }
 
 .reel-container {
 	display: inline-block;
-	height: 100px;
+	position: relative;
+	height: 120px;
+	background: darkcyan;
+}
+
+reel {
+	display: inline-block;
 	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
+	height: 100px;
+	position: relative;
+	margin: 10px;
+	border-radius: 10px;
 }
 
-.reel-gradiant {
 
+/*.reel-container:after,.reel-container:before {
+  content: " ";
+  display: block;
+  height: 40px;
+  left: 0;
+  position: absolute;
+  width: 100px;
 }
+
+.reel-container:after {
+    bottom: 0;
+    background: rgba(255,255,255,0);
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(204,204,204,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc', GradientType=0 );
+}
+
+.reel-container:before {
+    top: 0;
+    background: rgba(204,204,204,1);
+    background: linear-gradient(to bottom, rgba(204,204,204,1) 0%, rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#ffffff', GradientType=0 );
+}*/
+
 
 .reel-item-img {
     height: 100px;
@@ -50,12 +86,13 @@
     background-size: 100px 100px !important;
     background-repeat: no-repeat !important;
     box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+	border-radius: 10px;
 }
 
 .spin-button {
     position: relative;
     display: inline-block;
-    margin: 20px 0;
+    margin: 15px 0;
     left: 50%;
     transform: translateX(-50%);
 }

@@ -1,6 +1,5 @@
 var app = angular.module('goodmorning', []);
-app.controller('goodMorningCtrl', goodMorningCtrl)
-app.directive('reel', reelDirective);
+app.controller('goodMorningCtrl', goodMorningCtrl);
 
 goodMorningCtrl.$inject = ['$scope', '$timeout'];
 function goodMorningCtrl($scope, $timeout) {
@@ -46,12 +45,13 @@ function goodMorningCtrl($scope, $timeout) {
 	};
 
 	$scope.reels = [$scope.reel0, $scope.reel1, $scope.reel2];
-	$scope.isRunnig = false;
-
+	$scope.isRunning = false;
+	$scope.everStarted = false;
 	$scope.startMachine = function() {
 		angular.forEach($scope.reels, function(reel){
 			reel.runningFlag = true;
 		});
+		$scope.everStarted = true;
 		$scope.isRunning = true;
 		$scope.didYouWin = false;
 		$scope.whatYouWon = {};
@@ -96,79 +96,5 @@ function goodMorningCtrl($scope, $timeout) {
 		$scope.didYouWin = true;
 		$scope.whatYouWon = prize[stoppedAt];
 		$scope.$apply();
-	}
-}
-
-function reelDirective() {
-	return {
-		restrict : 'E',
-		scope : {
-			options : '='
-		},
-		templateUrl : 'reelDirective.tpl.html',
-		link : function(scope, element) {
-
-			scope.data = scope.options.data;
-
-			var interval;
-			var change;
-			var mininterval;
-			var maxinterval;
-
-			scope.image_background;
-
-			var init = function() {
-				scope.index = 0;
-				interval = 100;
-				change = Math.floor((Math.random() * 10) + 5);
-				mininterval = 10;
-				maxinterval = Math.floor((Math.random() * 100) + 200);
-
-				//scope.image_background = {'background' : 'url(' + scope.data[scope.index].img + ')'};
-			}
-
-			var fast = true;
-			function startReel() {
-
-				var e =  angular.element(element.children()[0]).parent().parent()[0];
-
-				scope.reelSpin = setInterval(function() {
-					scope.index = (scope.index + 1) % scope.data.length;
-
-					e.scrollTop = scope.index * 100;
-					console.log(e.scrollTop);
-					//scope.image_background = {'background' : 'url(' + scope.data[scope.index].img + ')'};
-					scope.$apply();
-
-					if(fast) {
-						interval = interval - change;
-						if(interval < mininterval)
-						fast = false;
-					} else {
-						interval = interval + change;
-						if(interval > maxinterval) {
-							stop();
-						}
-					}
-					//console.log(interval);
-				}, interval);
-			}
-
-			var stop = function() {
-				clearInterval(scope.reelSpin);
-				scope.options.runningFlag = false;
-				scope.options.stoppedAt = scope.index;
-				scope.$emit('reelStopped');
-			}
-
-			scope.$watch('options.runningFlag', function(newValue, oldValue){
-				if(newValue) {
-					init();
-					startReel();
-				}
-			});
-
-			init();
-		}
 	}
 }
